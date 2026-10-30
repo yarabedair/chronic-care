@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chronicare - Auth</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4">
+
+  <!-- Main Container -->
+  <div class="w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[620px]">
+    
+    <!-- LEFT PANEL (Hero Section) -->
+    <div class="md:col-span-5 bg-gradient-to-br from-[#0c2340] via-[#103058] to-[#1d4ed8] text-white p-8 md:p-10 flex flex-col justify-between relative overflow-hidden">
+      <!-- Background pattern -->
+      <div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+      
+      <div>
+        <!-- Logo -->
+        <div class="flex items-center gap-3 mb-10">
+          <div class="relative flex items-center justify-center text-cyan-400">
+            <i data-lucide="heart" class="w-10 h-10 fill-cyan-400/20 stroke-[2.5]"></i>
+            <i data-lucide="plus" class="w-5 h-5 absolute stroke-[3]"></i>
+          </div>
+          <div>
+            <h1 class="text-2xl font-bold tracking-tight text-white">Chronicare</h1>
+            <p class="text-[11px] text-cyan-200 tracking-wider font-light">Care Today .. Healthier Tomorrow</p>
+          </div>
+        </div>
+
+        <!-- Dynamic Hero Text for Sign In -->
+        <div id="hero-signin-content">
+          <h2 class="text-3xl font-bold mb-8 leading-tight">Your health<br><span class="text-cyan-300">is our priority</span></h2>
+          
+          <ul class="space-y-5 text-sm text-slate-200">
+            <li class="flex items-center gap-3">
+              <div class="p-2 bg-white/10 rounded-lg backdrop-blur-sm"><i data-lucide="calendar" class="w-4 h-4 text-cyan-300"></i></div>
+              <span>Track Your Health and Appointments</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="p-2 bg-white/10 rounded-lg backdrop-blur-sm"><i data-lucide="pill" class="w-4 h-4 text-cyan-300"></i></div>
+              <span>Manage Your Medications</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="p-2 bg-white/10 rounded-lg backdrop-blur-sm"><i data-lucide="line-chart" class="w-4 h-4 text-cyan-300"></i></div>
+              <span>Monitor Your Condition</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Dynamic Hero Text for Sign Up -->
+        <div id="hero-signup-content" class="hidden">
+          <h2 class="text-3xl font-bold mb-8 leading-tight">Take Control<br><span class="text-cyan-300">of Your Health</span></h2>
+          
+          <ul class="space-y-5 text-sm text-slate-200">
+            <li class="flex items-center gap-3">
+              <div class="p-2 bg-white/10 rounded-lg backdrop-blur-sm"><i data-lucide="folder-heart" class="w-4 h-4 text-cyan-300"></i></div>
+              <span>Store Your Medical History</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="p-2 bg-white/10 rounded-lg backdrop-blur-sm"><i data-lucide="bell" class="w-4 h-4 text-cyan-300"></i></div>
+              <span>Get Reminders for Medications</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <div class="p-2 bg-white/10 rounded-lg backdrop-blur-sm"><i data-lucide="user-plus" class="w-4 h-4 text-cyan-300"></i></div>
+              <span>Consult with Doctors</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-cyan-200/70">
+        <span>© Chronicare Health Systems</span>
+        <i data-lucide="activity" class="w-5 h-5 text-cyan-400"></i>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL (Forms) -->
+    <div class="md:col-span-7 p-8 md:p-12 flex flex-col justify-center relative bg-white">
+      
+      <!-- SIGN IN FORM -->
+      <div id="signin-form-box" class="w-full max-w-md mx-auto space-y-6">
+        <div class="text-center">
+          <h2 class="text-2xl font-bold text-slate-900">Sign In</h2>
+          <p class="text-xs text-slate-500 mt-1">Welcome back to Chronicare</p>
+        </div>
+
+        <form class="space-y-4" onsubmit="event.preventDefault();">
+          <div class="relative">
+            <i data-lucide="mail" class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400"></i>
+            <input type="email" placeholder="Email Address" class="w-full pl-10 pr-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition" required />
+          </div>
+
+          <div class="relative">
+            <i data-lucide="lock" class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400"></i>
+            <input type="password" id="signin-password" placeholder="Password" class="w-full pl-10 pr-10 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition" required />
+            <button type="button" class="toggle-password-btn absolute right-3.5 top-3.5 text-slate-400 hover:text-slate-600" data-target="signin-password">
+              <i data-lucide="eye-off" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <div class="flex items-center justify-between text-xs pt-1">
+            <label class="flex items-center gap-2 text-slate-600 cursor-pointer">
+              <input type="checkbox" class="rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+              Remember me
+            </label>
+            <a href="#" class="text-blue-600 font-medium hover:underline">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="w-full bg-[#0c2340] hover:bg-slate-800 text-white font-medium py-2.5 rounded-xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-blue-900/10 transition">
+            Sign In <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </form>
+
+        <div class="relative flex items-center justify-center my-4">
+          <div class="border-t border-slate-200 w-full"></div>
+          <span class="bg-white px-3 text-xs text-slate-400 absolute">or</span>
+        </div>
+
+        <button class="w-full border border-slate-200 hover:bg-slate-50 text-slate-700 font-medium py-2.5 rounded-xl text-sm flex items-center justify-center gap-2 transition">
+          <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.26v3.15C3.25 21.3 7.31 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.24c-.25-.72-.38-1.49-.38-2.24s.13-1.52.38-2.24V6.61H1.26C.46 8.23 0 10.06 0 12s.46 3.77 1.26 5.39l4.02-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.25 2.7 1.26 6.61l4.02 3.15c.95-2.85 3.6-4.96 6.72-4.96z"/></svg>
+          Continue with Google
+        </button>
+
+        <p class="text-center text-xs text-slate-500 pt-2">
+          Don't have an account? <button id="to-signup-btn" class="text-blue-600 font-semibold hover:underline">Sign Up</button>
+        </p>
+      </div>
+
+      <!-- SIGN UP FORM -->
+      <div id="signup-form-box" class="w-full max-w-md mx-auto space-y-5 hidden">
+        <div class="text-center">
+          <h2 class="text-2xl font-bold text-slate-900">Sign Up</h2>
+          <p class="text-xs text-slate-500 mt-1">Create your account to get started</p>
+        </div>
+
+        <form class="space-y-3.5" onsubmit="event.preventDefault();">
+          <div class="relative">
+            <i data-lucide="user" class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400"></i>
+            <input type="text" placeholder="Full Name" class="w-full pl-10 pr-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition" required />
+          </div>
+
+          <div class="relative">
+            <i data-lucide="mail" class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400"></i>
+            <input type="email" placeholder="Email Address" class="w-full pl-10 pr-4 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition" required />
+          </div>
+
+          <div class="relative">
+            <i data-lucide="lock" class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400"></i>
+            <input type="password" id="signup-password" placeholder="Password" class="w-full pl-10 pr-10 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition" required />
+            <button type="button" class="toggle-password-btn absolute right-3.5 top-3.5 text-slate-400 hover:text-slate-600" data-target="signup-password">
+              <i data-lucide="eye-off" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <div class="relative">
+            <i data-lucide="lock" class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400"></i>
+            <input type="password" id="confirm-password" placeholder="Confirm Password" class="w-full pl-10 pr-10 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition" required />
+            <button type="button" class="toggle-password-btn absolute right-3.5 top-3.5 text-slate-400 hover:text-slate-600" data-target="confirm-password">
+              <i data-lucide="eye-off" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <div class="relative">
+            <i data-lucide="user-check" class="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400"></i>
+            <select class="w-full pl-10 pr-8 py-2.5 text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white text-slate-700 appearance-none cursor-pointer transition">
+              <option value="patient">Patient</option>
+              <option value="doctor">Doctor</option>
+            </select>
+            <i data-lucide="chevron-down" class="w-4 h-4 absolute right-3.5 top-3.5 text-slate-400 pointer-events-none"></i>
+          </div>
+
+          <div class="flex items-start gap-2 text-xs text-slate-600 pt-1">
+            <input type="checkbox" id="terms" class="mt-0.5 rounded border-slate-300 text-blue-600 focus:ring-blue-500" required>
+            <label for="terms">I agree to the <a href="#" class="text-blue-600 font-medium hover:underline">Terms & Conditions</a> and <a href="#" class="text-blue-600 font-medium hover:underline">Privacy Policy</a></label>
+          </div>
+
+          <button type="submit" class="w-full bg-[#0c2340] hover:bg-slate-800 text-white font-medium py-2.5 rounded-xl text-sm flex items-center justify-center gap-2 shadow-lg shadow-blue-900/10 transition mt-2">
+            Create Account <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </form>
+
+        <p class="text-center text-xs text-slate-500 pt-2">
+          Already have an account? <button id="to-signin-btn" class="text-blue-600 font-semibold hover:underline">Sign In</button>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Custom JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
